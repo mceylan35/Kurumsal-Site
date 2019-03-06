@@ -1,0 +1,33 @@
+﻿@model MstYangin.Models.Hakkimizda
+@{
+    ViewBag.Title = "Hakkimizda";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+   
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+<h2>Hakkimizda</h2>
+
+
+@using (Html.BeginForm())
+{
+    <input type="hidden" name="Id" value="@Model.Id"/>
+    <div class="form-group">
+
+        @Html.TextAreaFor(a => a.Icerik, new { @id = "FullIcerik",@class="form-control",@rows="200"})
+        <script>CKEDITOR.replace("FullIcerik");</script>
+
+    </div>
+    <div class="text-info">SEO Ayarları</div>
+    <div class="form-group">
+        <span class="text-info">Başlık</span>
+        @Html.EditorFor(model => model.Baslik, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    <div class="form-group">
+        <span class="text-info">Açıklama</span>
+        @Html.EditorFor(model => model.Aciklama, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-success" />
+    </div>
+}

@@ -1,0 +1,73 @@
+﻿@model IEnumerable<MstYangin.Models.Referanslar>
+@{
+    ViewBag.Title = "Liste";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section id="content">
+
+    <section id="shop" class="container">
+
+        <div class="row">
+
+            <!-- sidebar start -->
+            <!-- sidebar end -->
+            <!-- right column start -->
+            <div class="col-md-12">
+
+                <div class="row">
+
+                    <div class="col-md-12 wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+                        <div class="row product-results">
+                            <div class="product-results">
+                                <div class="col-xs-8">
+                                    <p class="woocommerce-result-count">
+                                        @Model.Count() adet referans bulundu
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @foreach (var referans in Model)
+                    {
+                        <div class="col-md-3">
+                            <div class="card mb-7" style="width: 18rem;">
+
+
+
+                                <img class="card-img-top" src="~/upload/@referans.ReferansResim" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">
+
+
+                                <div class="card-body text-info">
+                                    <h4 class="card-title">@referans.ReferansAd</h4>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    }
+
+                </div>
+
+                <div page-model="" page-action="List"></div>
+
+            </div>
+            <!-- right column end -->
+
+        </div>
+
+
+
+    </section>
+
+
+
+</section>
+
+
+----------
+
+

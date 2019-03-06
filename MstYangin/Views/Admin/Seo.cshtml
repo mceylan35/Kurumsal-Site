@@ -1,0 +1,43 @@
+﻿@model MstYangin.Models.Seo
+@{
+    ViewBag.Title = "Seo";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Site Seo Ayarları</h2>
+@using (Html.BeginForm())
+{
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <div class="form-group">
+       
+        @Html.LabelFor(model=>model.Title,"Site Başlığı",htmlAttributes:new {@class="control-label col-md-2"})
+        <div class="col-md-10">
+            @Html.EditorFor(model=>model.Title,new {htmlAttributes=new{@class="form-control"}})
+            @Html.ValidationMessageFor(message=>message.Title,"",new{@class="text-danger"} )
+
+        </div>
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model=>model.Description,"Site Açıklaması",htmlAttributes :new{@class="control-label col-md-2"})
+        <div class="col-md-10">
+            @Html.EditorFor(model=>model.Description,new {htmlAttributes=new {@class="form-control"}})
+            @Html.ValidationMessageFor(model=>model.Description,"",new{@class="text-danger"} )
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model=>model.Keywords,"Anahtar Kelimeler", htmlAttributes:new {@class="control-label col-md-2"})
+        <div class="col-md-10">
+            @Html.EditorFor(model=>model.Keywords,new{htmlAttributes=new {@class="form-control"}})
+            @Html.ValidationMessageFor(model=>model.Keywords,"",new {@class="text-danger"})
+        </div>
+    </div>
+   
+  
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Güncelle" class="btn btn-success"/>
+        </div>
+   
+
+
+}

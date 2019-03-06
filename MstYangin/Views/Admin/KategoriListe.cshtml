@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MstYangin.Models.Kategori>
+
+@{
+    var deleteAjaxOptions = new AjaxOptions
+    {
+        //UpdateTargetId = "tblKategori",
+     //   InsertionMode = InsertionMode.Replace,
+        LoadingElementId = "progress",
+        Confirm = "Kategoriyi Silmek istediğinize emin misiniz?",
+        OnSuccess = "OnSuccess(this)"
+      
+    };
+    
+ }
+
+<table class="table table-bordered">
+    
+    <thead>
+    <tr>
+        <th>
+            Kategori Adı
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var kategori in Model)
+    { 
+        <tr>
+            <td>@kategori.KategoriAdi</td>
+            <td>@Ajax.ActionLink("Sil","KategoriSil",new {Id=kategori.Id},deleteAjaxOptions,new {@class="btn btn-danger btn-sm"})</td>
+            
+        </tr>
+    }
+    </tbody>
+
+    
+
+</table>
+<script>
+  
+    function OnSuccess(btn) {
+        //alert('OnSuccess');
+
+        $(btn).closest('tr').remove();
+    }
+</script>

@@ -1,0 +1,104 @@
+﻿@model MstYangin.Models.Urunler
+@{
+    ViewBag.Title = "UrunDuzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+<div><a href="/Admin/UrunListe" class="btn btn-success">Listeye Geri Dön</a></div>
+
+
+@using (Html.BeginForm("UrunDuzenle","Admin",FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Ürün Düzenle</h4>
+    <hr />
+    
+    @Html.HiddenFor(model=>model.Id)
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.UrunAd, "Ürün Adı:", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UrunAd, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+            @Html.ValidationMessageFor(model => model.UrunAd, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Icerik, "Içerik", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+           @Html.TextAreaFor(model=>model.Icerik,new {@id="UrunIcerik",@class="form-control col-md-8",@rows="200"})
+            <script>
+                CKEDITOR.replace("UrunIcerik")
+            </script>
+            @Html.ValidationMessageFor(model => model.Icerik, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UrunKod, "Ürün Kodu", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UrunKod, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+            @Html.ValidationMessageFor(model => model.UrunKod, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.KategoriId, "Kategoriler", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("KategoriId", null, htmlAttributes: new { @class = "form-control col-md-8" })
+
+            @Html.ValidationMessageFor(model => model.KategoriId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Resim, "Resim", htmlAttributes: new { @class = "control-label col-md-2" })
+
+        <div class="col-md-10">
+
+
+            <input type="file" name="file" id="file" />
+
+
+        </div>
+    </div>
+    <hr />
+    <div class="form-group">
+
+        <div class="control-label col-md-3">
+            <h2>Seo Ayarları</h2>
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        @Html.LabelFor(model => model.Baslik, "Site Başlığı", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Baslik, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+            @Html.ValidationMessageFor(model => model.Baslik, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Aciklama, "Site Açıklaması", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Aciklama, new { htmlAttributes = new { @class = "form-control col-md-8" } })
+            @Html.ValidationMessageFor(model => model.Aciklama, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Ürünü Güncelle" class="btn btn-success" />
+        </div>
+    </div>
+</div>
+}

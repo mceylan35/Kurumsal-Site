@@ -1,0 +1,113 @@
+﻿
+@model MstYangin.Models.Haberler
+
+@{
+
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+   
+    var insertAjaxOptions = new AjaxOptions
+    {
+        AllowCache = false,
+        Url = Url.Action("HaberEkle"),
+        HttpMethod = "post",
+        Confirm = "Haber Eklensin mi?",
+        UpdateTargetId = "tblUrunler",
+        InsertionMode = InsertionMode.Replace,
+        LoadingElementId = "progress",
+        LoadingElementDuration = 500,
+        
+
+    };
+
+
+}
+<head>
+   
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h4 class="page-header">Haber Ekle</h4>
+            <div id="progress" class="progress" style="display: none;">
+                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" style="width: 100%"></div>
+            </div>
+            <div id="progress" class="progress" style="display: none;">
+
+                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" style="width: 100%"></div>
+
+            </div>
+            @using (Ajax.BeginForm(insertAjaxOptions))
+
+            {
+                @Html.AntiForgeryToken()
+            
+
+
+                <div class="form-group">
+
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+
+                        <label class="control-label">Haber Adı</label>
+                        @Html.EditorFor(model => model.HaberAdi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.HaberAdi, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label"></label>
+                        @Html.TextAreaFor(a=>a.Icerik,new{@id="HaberIcerik",@class="form-control",@rows="200" })
+                        
+                        
+                        <script>CKEDITOR.replace("HaberIcerik")</script>
+                       
+                    </div>
+                    <div class="control-label">Seo Ayarları</div>
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Html.EditorFor(model=>model.Baslik,new { htmlAttributes=new {@class="form-control"}})
+                            @Html.ValidationMessageFor(model=>model.Baslik,"",new{@class="text-danger"})
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">
+                            @Html.EditorFor(model=>model.Aciklama,new{htmlAttributes=new{@class="form-control"} })
+                            @Html.ValidationMessageFor(model=>model.Aciklama,"",new{@class="text-danger"})
+                        </label>
+                    </div>
+                
+                    <div class="form-group">
+
+                        <input type="submit" value="Ekle" class="btn btn-success" />
+
+                    </div>
+                </div>
+
+            }
+        </div>
+        
+       
+      
+
+    </div>
+
+
+
+
+
+   
+
+
+</div>
+
+

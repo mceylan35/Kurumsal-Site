@@ -1,0 +1,58 @@
+﻿@model IEnumerable<MstYangin.Models.Referanslar>
+
+
+
+@{
+        var deleteAjaxOptions = new AjaxOptions
+        {
+            LoadingElementId = "progress",
+            Confirm = "Referanı silmek istediğinize emin misiniz?",
+            OnSuccess = "OnSuccess(this)"
+        };
+
+    };
+    
+<div class="row">
+
+@foreach (var referans in Model)
+{
+
+    
+    
+ 
+
+<div id="referans">
+    <div class="col-md-3">
+        <div class="card mb-5" style="width: 18rem;">
+
+          
+              
+                    <img class="card-img-top"   src="~/upload/@referans.ReferansResim" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">
+
+                    
+                    <div class="card-body text-info">
+                     
+                            
+
+                                <h4 class="card-title">@referans.ReferansAd</h4>
+                            </div>
+                       
+                   
+                    <div class="card-footer bg-transparent border-success"> @Ajax.ActionLink("Sil", "ReferansSil", new { Id = referans.Id }, deleteAjaxOptions, new { @class = "btn btn-danger btn-sm", @id = "ref1" })</div>
+
+              
+           
+        </div>
+        </div>
+</div>
+}
+</div>
+
+
+<script>
+    function OnSuccess(btn) {
+      
+        $(btn).closest("#referans").remove();
+
+    }
+</script>

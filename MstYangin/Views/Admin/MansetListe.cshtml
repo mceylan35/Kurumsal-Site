@@ -1,0 +1,58 @@
+﻿@model IEnumerable<MstYangin.Models.Manset>
+
+@{
+    var deleteAjaxOptions = new AjaxOptions
+    {
+        LoadingElementId = "progress",
+        Confirm = "Manşeti Silmek istediğinize emin misiniz?",
+        OnSuccess = "OnSuccess(this)"
+    };
+}
+
+
+<div class="row">
+    
+    @foreach (var manset in Model)
+    {
+        <div id="manset">
+            <div class="col-md-3">
+                <div class="card mb-5" style="width: 18rem;">
+
+          
+              
+                    <img class="card-img-top"   src="~/upload/@manset.ResimAdresi" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">
+
+                    
+                    <div class="card-body text-info">
+                     
+                            
+
+                        <h4 class="card-title">@manset.ResimAciklama</h4>
+                    </div>
+                       
+                   
+                    <div class="card-footer bg-transparent border-success"> @Ajax.ActionLink("Sil", "ReferansSil", new { Id = manset.Id }, deleteAjaxOptions, new { @class = "btn btn-danger btn-sm"})</div>
+
+              
+           
+                </div>
+            </div>
+            
+            
+
+        </div>
+
+
+        
+    }
+    
+
+</div>
+
+
+<script>
+    function OnSuccess(btn) {
+        $(btn).closest("#manset").remove();
+    }
+</script>
+

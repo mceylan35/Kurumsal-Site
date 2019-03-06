@@ -1,0 +1,306 @@
+﻿@model MstYangin.Models.Urunler
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="content">
+
+    <!-- shop section start -->
+    <section id="shop" class="container">
+
+        <!-- row start -->
+        <div class="row">
+
+            <!-- sidebar start -->
+          
+            <!-- sidebar end -->
+            <!-- main column start -->
+            <div class="col-md-12">
+
+                <div class="row">
+
+
+                    <!-- product page top info start -->
+                    <div class="col-md-12 product">
+                        <div class="row">
+                            <div class="col-md-5">
+
+                                <div id="product-gallery" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+
+                                   
+                                        <div class="item">
+                                            <h4>
+
+                                                <img alt="" class="img-responsive" src="~/upload/@Model.Resim" />
+
+                                            </h4>
+                                        </div>
+
+
+                                    
+
+
+
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-7">
+
+                                <div class="padding15">
+                                    <h2 class="product-title"><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@Model.UrunAd</font></font></b></h2>
+                                   
+                                    <p class="product-price"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><b>Ürün Kod:</b>@Model.UrunKod</font></font></p>
+                                </div>
+                                <p>@Model.Aciklama</p>
+
+
+                                <div class="padding15">
+
+                           
+
+                                </div>
+
+                                <p>
+                                    <b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kategori: </font></font></b>
+                                  
+                                        <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@Model.Kategori.KategoriAdi</font></font>
+                                    
+
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- product page top info end -->
+                    <!-- product page middle info start -->
+                    <div class="col-md-12 padding25">
+
+
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#description"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Açıklama</font></font></a></li>
+                          </ul>
+
+
+                        <div class="tab-content">
+
+                            <!-- description tab start -->
+                            <div id="description" class="tab-pane fade in active">
+
+                                @Model.Icerik
+                            </div>
+                            <!-- description tab end -->
+                            <!-- Specifications tab start -->
+                          
+                            <!-- Specifications tab end -->
+                            <!-- reviews tab start -->
+                            <div id="reviews" class="tab-pane fade">
+
+                                <div class="reviews-list">
+
+                                    <div class="media">
+
+                                        <a class="media-left" href="#">
+                                            <img alt="" class="img-circle avatar" src="images/team/thumb8_40.jpg">
+                                        </a>
+                                        <div class="media-body">
+                                            <p class="pull-right"><small><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></small></p>
+                                            <h4 class="media-heading"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">John Doe </font></font><small><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2 gün önce</font></font></small></h4><font style="vertical-align: inherit;">
+                                                <font style="vertical-align: inherit;">
+                                                    Vero eos et accusamus ve iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque bozulmasına neden olur.
+                                                </font>
+                                            </font>
+                                        </div>
+                                    </div>
+
+                                    <div class="media">
+
+                                        <a class="media-left" href="#">
+                                            <img alt="" class="img-circle avatar" src="images/team/thumb5_40.jpg">
+                                        </a>
+                                        <div class="media-body">
+                                            <p class="pull-right"><small><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></small></p>
+                                            <h4 class="media-heading"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sarah Smith </font></font><small><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">4 gün önce</font></font></small></h4>
+                                            Nunc risus ex, tempus quis purus ac, tempor consequat ex. Vivamus sem magna, maximus at est id, maximus aliquet nunc. Suspendisse lacinia velit a eros porttitor, in interdum ante faucibus.
+                                        </div>
+                                    </div>
+
+                                    <div class="media">
+
+                                        <a class="media-left" href="#">
+                                            <img alt="" class="img-circle avatar" src="images/team/thumb3_40.jpg">
+                                        </a>
+                                        <div class="media-body">
+                                            <p class="pull-right"><small><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></small></p>
+                                            <h4 class="media-heading">Jane Doe<small>5 days ago</small></h4>
+                                            Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="page-header">
+                                    <h4>ADD A <b>REVIEW</b></h4>
+                                </div>
+
+                                <p class="text-muted">You must be logged in to add a review.</p>
+
+                                <form>
+                                    <div class="row">
+                                        <div class="form-group col-xs-6">
+                                            <input type="text" class="form-control input-lg" placeholder="Name*" required="">
+                                        </div>
+                                        <div class="form-group col-xs-6">
+                                            <input type="email" class="form-control input-lg" placeholder="Email*" required="">
+                                        </div>
+
+                                        <div class="form-group col-xs-12">
+                                            <textarea class="form-control" rows="6" placeholder="Review*" required=""></textarea>
+                                        </div>
+
+                                        <div class="form-group col-xs-12 text-right">
+                                            <button type="submit" class="btn btn-primary"><i class="fa fa-check fa-fw"></i> SUBMIT REVIEW</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                            <!-- reviews tab end -->
+
+                        </div>
+
+                    </div>
+                    <!-- product page middle info end -->
+                    <!-- related products start -->
+                    <div class="col-md-12">
+
+                        <div class="text-center">
+                            <h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">İLGİLİ </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ÜRÜNLER</font></font></b></h3>
+                        </div>
+
+                        <div id="products-carousel" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+
+                            <div class="owl-wrapper-outer">
+                                <div class="owl-wrapper" style="width: 2460px; left: 0px; display: block; transition: all 1000ms ease 0s; transform: translate3d(0px, 0px, 0px);">
+                                    <div class="owl-item" style="width: 246px;">
+                                        <div>
+                                            <div class="text-center product-item">
+                                                <div class="product-item-top">
+                                                    <img alt="" class="img-responsive" src="images/products/product1_thumb.jpg">
+                                                    <div class="mask"></div>
+                                                    <ul class="list-unstyled list-inline">
+                                                        <li><a href="#"><i class="fa fa-link fa-fw"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-cart-plus fa-fw"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="product-item-inner">
+                                                    <h3 class="product-title"><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fotoğraf makinesi</font></font></a></h3>
+                                                    <p class="product-price"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ 129</font></font></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><div class="owl-item" style="width: 246px;">
+                                        <div>
+                                            <div class="text-center product-item">
+                                                <div class="product-item-top">
+                                                    <img alt="" class="img-responsive" src="images/products/product3_thumb.jpg">
+                                                    <div class="mask"></div>
+                                                    <ul class="list-unstyled list-inline">
+                                                        <li><a href="#"><i class="fa fa-link fa-fw"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-cart-plus fa-fw"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="product-item-inner">
+                                                    <h3 class="product-title"><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Kanepe</font></font></a></h3>
+                                                    <p class="product-price"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ 519</font></font></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><div class="owl-item" style="width: 246px;">
+                                        <div>
+                                            <div class="text-center product-item">
+                                                <div class="product-item-top">
+                                                    <img alt="" class="img-responsive" src="images/products/product4_thumb.jpg">
+                                                    <div class="mask"></div>
+                                                    <ul class="list-unstyled list-inline">
+                                                        <li><a href="#"><i class="fa fa-link fa-fw"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-cart-plus fa-fw"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="product-item-inner">
+                                                    <h3 class="product-title"><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El çantası</font></font></a></h3>
+                                                    <p class="product-price"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">99 $</font></font></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><div class="owl-item" style="width: 246px;">
+                                        <div>
+                                            <div class="text-center product-item">
+                                                <div class="product-item-top">
+                                                    <img alt="" class="img-responsive" src="images/products/product1_thumb.jpg">
+                                                    <div class="mask"></div>
+                                                    <ul class="list-unstyled list-inline">
+                                                        <li><a href="#"><i class="fa fa-link fa-fw"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-cart-plus fa-fw"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="product-item-inner">
+                                                    <h3 class="product-title"><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fotoğraf makinesi</font></font></a></h3>
+                                                    <p class="product-price"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">29 $</font></font></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><div class="owl-item" style="width: 246px;">
+                                        <div>
+                                            <div class="text-center product-item">
+                                                <div class="product-item-top">
+                                                    <img alt="" class="img-responsive" src="images/products/product2_thumb.jpg">
+                                                    <div class="mask"></div>
+                                                    <ul class="list-unstyled list-inline">
+                                                        <li><a href="#"><i class="fa fa-link fa-fw"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-cart-plus fa-fw"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="product-item-inner">
+                                                    <h3 class="product-title"><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ahşap sandalye</font></font></a></h3>
+                                                    <p class="product-price"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">29 $</font></font></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+
+                            <div class="owl-controls clickable"><div class="owl-buttons"><div class="owl-prev"><i class="fa fa-angle-left"></i></div><div class="owl-next"><i class="fa fa-angle-right"></i></div></div></div>
+                        </div>
+                        <!-- carousel end -->
+
+                    </div>
+                    <!-- related products end -->
+
+                </div>
+                <!-- row end -->
+
+            </div>
+            <!-- main column end -->
+
+        </div>
+        <!-- row end -->
+
+    </section>
+    <!-- shop section end -->
+
+</section>
+

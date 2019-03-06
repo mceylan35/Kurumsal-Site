@@ -1,0 +1,77 @@
+﻿@model IEnumerable<MstYangin.Models.Urunler>
+@{
+    ViewBag.Title = "UrunListe";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+
+@{
+    var deleteAjaxOptions = new AjaxOptions()
+    {
+        LoadingElementId = "progress",
+        Confirm = "Ürünü Silmek istediğinize emin misiniz?",
+        OnSuccess = "OnSuccess(this)"
+    };
+}
+
+<head>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<h2>Ürün Listesi</h2>
+<a href="/Admin/UrunEkle" class="btn btn-success">Ürün Ekle</a>
+<div><br /></div>
+
+<table class="table table-bordered">
+
+    <thead>
+    <tr>
+        
+        <th>Ürün Resmi</th>
+        <th>Ürün Kodu</th>
+        <th>Ürün Adı</th>
+         
+        <th>Baslik</th>
+        <th>Kategori</th>
+        
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var urunler in Model)
+    {
+        <tr>
+            <td><img src="~/upload/@urunler.Resim" class="img-responsive product-thumb" width="100px" /></td>
+            <td>@urunler.UrunKod</td>
+            <td>@urunler.UrunAd</td>
+            <td>@urunler.Baslik</td>
+            <td>@urunler.Kategori.KategoriAdi</td>
+          
+       
+            <td>@Ajax.ActionLink("Sil","UrunSil",new {Id=urunler.Id},deleteAjaxOptions,new{@class="btn btn-danger btn-sm"})
+
+               @Html.ActionLink("Düzenle","UrunDuzenle",new {Id=urunler.Id},new{@class="btn btn-warning btn-sm"} )
+                </td>
+        </tr>
+
+    }
+
+    </tbody>
+
+
+</table>
+
+
+
+<script>
+    function OnSuccess(btn) {
+        $(btn).closest('tr').remove();
+    }
+</script>

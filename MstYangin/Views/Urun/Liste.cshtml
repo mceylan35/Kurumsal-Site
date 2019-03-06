@@ -1,0 +1,76 @@
+﻿@model IEnumerable<MstYangin.Models.Urunler>
+@{
+    ViewBag.Title = "Liste";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="content">
+
+    <section id="shop" class="container">
+
+        <div class="row">
+
+            <!-- sidebar start -->
+            <!-- sidebar end -->
+            <!-- right column start -->
+            <div class="col-md-12">
+
+                <div class="row">
+
+                    <div class="col-md-12 wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+                        <div class="row product-results">
+                            <div class="product-results">
+                                <div class="col-xs-8">
+                                    <p class="woocommerce-result-count">
+                                        There are @Model.Count() products
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @foreach (var urun in Model)
+                    {
+                        /* @Html.Partial("_ProductItem", product)*/
+                        <div class="col-md-4 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                            <div class="text-center product-item">
+                                <div class="product-item-top">
+                                    <img alt="" class="img-responsive" src="/upload/@urun.Resim">
+                                    <div class="mask"></div>
+                                    <ul class="list-unstyled list-inline">
+                                        <li><a asp-controller="Product" asp-action="Details" asp-route-id="@urun.Id"></a></li>
+                                    </ul>
+                                    
+                                    <div class="product-item-inner">
+                                        <h3 class="product-title">
+                                            <a asp-controller="Urun"
+                                               asp-action="Detay"
+                                               asp-route-id="@urun.Id">
+                                                @urun.UrunAd
+                                            </a>
+                                        </h3>
+
+                                    </div>
+                                </div>
+                           
+                            </div>
+                        </div>
+
+                    }
+
+                </div>
+
+                <div page-model="" page-action="List"></div>
+
+            </div>
+            <!-- right column end -->
+
+        </div>
+
+
+
+    </section>
+
+
+
+</section>

@@ -1,0 +1,74 @@
+﻿@model MstYangin.Models.Referanslar
+@{
+    ViewBag.Title = "ReferansEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@{
+    var insertAjaxOptions = new AjaxOptions
+    {
+        AllowCache = false,
+       
+        HttpMethod = "post",
+        Confirm = "Referans Eklensin mi?",
+        UpdateTargetId = "tblReferans",
+        InsertionMode = InsertionMode.Replace,
+        LoadingElementId = "progress",
+        LoadingElementDuration = 500
+
+    };
+}
+<head>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<h4 class="page-header">Referans Ekle</h4>
+<div id="progress" class="progress" style="display: none;">
+    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" style="width: 100%"></div>
+</div>
+<div id="progress" class="progress" style="display: none;">
+
+    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" style="width: 100%"></div>
+
+</div>
+
+
+@using (Ajax.BeginForm("ReferansEkle", "Referanslar",insertAjaxOptions,new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        @if (ViewData["Message"] != null)
+        {
+            <div class="p-3 mb-2 bg-primary text-white">@ViewData["Message"]
+
+            </div>
+            <br/>
+        }
+
+
+        @Html.EditorFor(model => model.ReferansAd, new {htmlAttributes = new {@class = "form-control"}})
+
+    </div>
+    <div class="form-group">
+        <label for="file"> Resim </label>
+        <input type="file" name="file" id="file"/>
+    </div>
+    <input type="submit" value="Referans Ekle" class="btn btn-success"/>
+
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="page-header">Referanslar</h4>
+        <div id="tblReferans">
+            @{
+                Html.RenderAction("ReferansListe");
+            }
+        </div>
+    </div>
+</div>
